@@ -1,12 +1,1162 @@
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal website :nerd:</title>
+    <title>Devolio</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <script src="prism/prism.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
-<body>
+<body style="background-color: #070707; color: white">
 
+
+<br>
+<br>
+<br>
+<div style="text-align: center;padding: 40px;margin-left: 15%;margin-right: 15%;">
+    Hello, world! I'm <span class="gradient">Jackson Gray</span>, a 20-year-old current living in Denver, Colorado.
+    My aspirations are firmly set on becoming a software engineer, and I'm always eager to get closer to this goal.
+    I've enrolled in a semester of programming at Columbia College Chicago, completed CS50x by Harvard, and undertaken numerous passion projects, continually learning through hands-on experience. I am currently enrolled at Flatiron School studying software engineering.
+    <br><br>
+    While I might see myself as typically boring and uninteresting, code never fails to spark my creativity in ways I didn't think I was capable of.
+    My current toolset includes a mix of <span class="gradient">C, C#, C++, HTML, CSS, JS, and PHP</span>, with hands-on experience creating projects and finding solutions in each of these languages.
+    I genuinely believe that technology can be whatever you want it to be and has the power to change the world.
+    <br><br>
+    This webpage serves as a showcase for my skills and knowledge as I continue to grow in the field of software engineering.
+    Below, you can find personal projects, schoolwork, and other pieces of my work. All of my code is available on my <a href="https://github.com/jgray-dev/" target="_blank" class="link">GitHub</a>.<br><br>
+    This is a clone of a my personal portfolio website, which was made prior to my enrollment at Flatiron School. It is fully dynamic, and automatically format's new projects I upload, but because GitHub Pages does not support PHP, I was forced to disable those features, and pasteuse strictly HTML, CSS, and JS.
+</div>
+
+
+<div class="nav">
+
+        <a href="#caesar">Caesar.c</a>
+
+        <a href="#devolio">Devolio.php</a>
+
+        <a href="#filter">Filter.c</a>
+
+        <a href="#multiplayersnake">MultiplayerSnake.cs</a>
+
+        <a href="#renderer">Renderer.cs</a>
+
+        <a href="#runoff">Runoff.c</a>
+
+        <a href="#wpfsnake">WPFsnake.cs</a>
+    </div>
+
+    <div id="caesar" class="section">
+        <h2 class="gradient">Caesar.c</h2>
+        <p>This is a project I completed for CS50x 2023. It is a Caesar cipher written in the C programming language. It "encrypts" messages by "rotating" or "shifting" them a certain amount <i><b>K</b></i> places.
+</p>
+        <pre><code class="language-c">
+            #include &lt;cs50.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+void rotate();
+
+int main(int argc, string argv[])
+{
+    if (argc != 2)
+    {
+        printf(&quot;usage: ./caesar key\n&quot;);
+        return 1;
+    }
+    else
+    {
+        int result = strcmp(argv[1], &quot;2x&quot;);
+        if (result == 0)
+        {
+            return 1;
+        }
+        int key = atoi(argv[1]);
+        printf(&quot;isdigit: %i\n&quot;, isdigit(key));
+        printf(&quot;plaintext:  &quot;);
+        string text = get_string(&quot;&quot;);
+        rotate(key, text);
+    }
+}
+
+void rotate(int key, string text)
+{
+    char cipher[strlen(text)];
+    for (int i = 0; i &lt; strlen(text); i++)
+    {
+        if (isalpha(text[i]))
+        {
+            while (key &gt; 26)
+            {
+                key -= 26;
+            }
+            char tmp = text[i];
+            if (isupper(text[i]))
+            {
+                tmp = &#039;A&#039; + (tmp - &#039;A&#039; + key) % 26;
+            }
+            else if (islower(text[i]))
+            {
+                tmp = &#039;a&#039; + (tmp - &#039;a&#039; + key) % 26;
+            }
+            cipher[i] = tmp;
+        }
+        else
+        {
+            cipher[i] = text[i];
+        }
+    }
+    printf(&quot;ciphertext: &quot;);
+    for (int i = 0; i &lt; strlen(cipher); i++)
+    {
+        printf(&quot;%c&quot;, cipher[i]);
+    }
+    printf(&quot;\n&quot;);
+}        </code></pre>
+    </div>
+    <div id="devolio" class="section">
+        <h2 class="gradient">Devolio.php</h2>
+        <p>This is the PHP code written to create this "Devolio" (Developer portfolio) website. It indexes the files in my Projects directory, and automatically formats and displays them using Prism. It is adaptive and dynamic to suit my needs and personal design choices. It may update as my requirements change, so just check the page source :-)
+</p>
+        <pre><code class="language-php">
+            &lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Devolio&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/bootstrap.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;prism/prism.css&quot;&gt;
+    &lt;script src=&quot;prism/prism.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+    &lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;assets/favicon.ico&quot;&gt;
+&lt;/head&gt;
+&lt;body style=&quot;background-color: #070707; color: white&quot;&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;div style=&quot;text-align: center;padding: 40px;margin-left: 15%;margin-right: 15%;&quot;&gt;
+    Hello, world! I&#039;m &lt;span class=&quot;gradient&quot;&gt;Jackson Gray&lt;/span&gt;, a 20-year-old current living in Chicago.
+    My aspirations are firmly set on becoming a software engineer, and I&#039;m always eager to get closer to this goal.
+    I&#039;ve enrolled in programming courses at Columbia College Chicago, completed CS50x by Harvard, and undertaken numerous passion projects, continually learning through hands-on experience.
+    &lt;br&gt;&lt;br&gt;
+    While I might see myself as typically boring and uninteresting, code never fails to spark my creativity in ways I didn&#039;t think I was capable of.
+    My current toolset includes a mix of &lt;span class=&quot;gradient&quot;&gt;C, C#, C++, HTML, CSS, and PHP&lt;/span&gt;, with hands-on experience creating projects and finding solutions in each of these languages.
+    I genuinely believe that technology can be whatever you want it to be and has the power to change the world.
+    &lt;br&gt;&lt;br&gt;
+    This webpage serves as a showcase for my skills and knowledge as I continue to grow in the field of software engineering.
+    Below, you can find personal projects, schoolwork, and other pieces of my work. All of my code is available on my &lt;a href=&quot;https://github.com/jgray08/&quot; target=&quot;_blank&quot; class=&quot;link&quot;&gt;GitHub&lt;/a&gt;.
+&lt;/div&gt;
+
+&lt;?php
+$directory = &#039;Projects&#039;;
+$files = scandir($directory);
+$files = array_diff($files, array(&#039;.&#039;, &#039;..&#039;));
+$filteredFiles = array_filter($files, function($file) {
+    return pathinfo($file, PATHINFO_EXTENSION) !== &#039;txt&#039;;
+});
+?&gt;
+
+&lt;div class=&quot;nav&quot;&gt;
+    &lt;?php foreach ($filteredFiles as $file): ?&gt;
+        &lt;?php
+        $filename = pathinfo($file, PATHINFO_FILENAME);
+        $link = &#039;#&#039; . strtolower(str_replace(&#039; &#039;, &#039;&#039;, $filename));
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+        ?&gt;
+        &lt;a href=&quot;&lt;?php echo $link; ?&gt;&quot;&gt;&lt;?php echo $filename . &#039;.&#039; . $ext; ?&gt;&lt;/a&gt;
+    &lt;?php endforeach; ?&gt;
+&lt;/div&gt;
+
+&lt;?php foreach ($filteredFiles as $file):
+    $filename = pathinfo($file, PATHINFO_FILENAME);
+    $ext = pathinfo($file, PATHINFO_EXTENSION);
+    $lang = pathinfo($file, PATHINFO_EXTENSION);
+    $languages = array(&quot;cs&quot;=&gt;&quot;csharp&quot;, &quot;cpp&quot;=&gt;&quot;cpp&quot;, &quot;c&quot;=&gt;&quot;c&quot;, &quot;html&quot;=&gt;&quot;html&quot;, &quot;php&quot;=&gt;&quot;php&quot;);
+    $lang = $languages[$ext];
+    $descriptor = &quot;Looks like I forgot to add the description for this code!&quot;;
+    if (file_exists($directory . &#039;/&#039; . $filename . &#039;.txt&#039;)) {
+        $descriptor = file_get_contents($directory . &#039;/&#039; . $filename . &#039;.txt&#039;);
+    }
+    $fileContents = file_get_contents($directory . &#039;/&#039; . $file);
+    ?&gt;
+    &lt;div id=&quot;&lt;?php echo strtolower(str_replace(&#039; &#039;, &#039;&#039;, $filename))?&gt;&quot; class=&quot;section&quot;&gt;
+        &lt;h2 class=&quot;gradient&quot;&gt;&lt;?php echo $filename . &#039;.&#039; . $ext ?&gt;&lt;/h2&gt;
+        &lt;p&gt;&lt;?php echo $descriptor ?&gt;&lt;/p&gt;
+        &lt;pre&gt;&lt;code class=&quot;&lt;?php echo &#039;language-&#039; . $lang?&gt;&quot;&gt;
+            &lt;?php echo htmlspecialchars($fileContents); ?&gt;
+        &lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+&lt;?php endforeach; ?&gt;
+&lt;div class=&quot;foot&quot;&gt;Programmed with &amp;hearts; by Jackson Gray&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;        </code></pre>
+    </div>
+    <div id="filter" class="section">
+        <h2 class="gradient">Filter.c</h2>
+        <p>This is a project I completed for CS50x 2023. It is a program that takes in an input image, applies a filter based on user input, and outputs the resulting image. This is the filtering portion of code, written by me. The rest of the code for usage of this project can be found on <a href="https://github.com/jgray08/CS50/tree/main/filter-less" target="_blank" class="link">GitHub</a>. This code demonstrates an understanding of the general C syntax, the usage and declaration of structs, and the usage of external header files.</p>
+        <pre><code class="language-c">
+            #include &quot;helpers.h&quot;
+#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+// Convert image to grayscale
+void grayscale(int height, int width, RGBTRIPLE image[height][width])
+{
+    for (int r = 0; r &lt; height; r++)
+    {
+        for (int c = 0; c &lt; width; c++)
+        {
+            int t = 0;
+            int red = image[r][c].rgbtRed;
+            int green = image[r][c].rgbtGreen;
+            int blue = image[r][c].rgbtBlue;
+            t = round(((float) red + green + blue) / 3);
+            image[r][c].rgbtRed = t;
+            image[r][c].rgbtGreen = t;
+            image[r][c].rgbtBlue = t;
+        }
+    }
+    return;
+}
+
+// Convert image to sepia
+void sepia(int height, int width, RGBTRIPLE image[height][width])
+{
+    for (int r = 0; r &lt; height; r++)
+    {
+        for (int c = 0; c &lt; width; c++)
+        {
+            int red = image[r][c].rgbtRed;
+            int green = image[r][c].rgbtGreen;
+            int blue = image[r][c].rgbtBlue;
+            int newRed = round(.393 * (float) red + .769 * green + .189 * blue);
+            int newGreen = round(.349 * (float) red + .686 * green + .168 * blue);
+            int newBlue = round(.272 * (float) red + .534 * green + .131 * blue);
+            if (newRed &gt; 255)
+            {
+                newRed = 255;
+            }
+
+            if (newGreen &gt; 255)
+            {
+                newGreen = 255;
+            }
+
+            if (newBlue &gt; 255)
+            {
+                newBlue = 255;
+            }
+            image[r][c].rgbtRed = newRed;
+            image[r][c].rgbtGreen = newGreen;
+            image[r][c].rgbtBlue = newBlue;
+        }
+    }
+    return;
+}
+
+// Reflect image horizontally
+void reflect(int height, int width, RGBTRIPLE image[height][width])
+{
+    for (int r = 0; r &lt; height; r++)
+    {
+        RGBTRIPLE temp[width];
+        for (int c = 0; c &lt; width; c++)
+        {
+            int red = image[r][c].rgbtRed;
+            int green = image[r][c].rgbtGreen;
+            int blue = image[r][c].rgbtBlue;
+            int newC = width - c - 1;
+
+            temp[newC].rgbtRed = red;
+            temp[newC].rgbtGreen = green;
+            temp[newC].rgbtBlue = blue;
+        }
+
+        for (int c = 0; c &lt; width; c++)
+        {
+            image[r][c].rgbtRed = temp[c].rgbtRed;
+            image[r][c].rgbtGreen = temp[c].rgbtGreen;
+            image[r][c].rgbtBlue = temp[c].rgbtBlue;
+        }
+    }
+    return;
+}
+
+// Blur image
+void blur(int height, int width, RGBTRIPLE image[height][width])
+{
+    RGBTRIPLE output[height][width];
+    int amt = 0;
+    int red = 0;
+    int green = 0;
+    int blue = 0;
+    for (int r = 0; r &lt; height; r++)
+    {
+        for (int c = 0; c &lt; width; c++)
+        {
+            amt = 0;
+            red = 0;
+            green = 0;
+            blue = 0;
+            for (int x = -1; x &lt; 2; x++)
+            {
+                for (int y = -1; y &lt; 2; y++)
+                {
+                    int newx = r + x;
+                    int newy = c + y;
+                    if (newx &gt;= 0 &amp;&amp; newx &lt; height &amp;&amp; newy &gt;= 0 &amp;&amp; newy &lt; width)
+                    {
+                        amt++;
+                        red += image[newx][newy].rgbtRed;
+                        green += image[newx][newy].rgbtGreen;
+                        blue += image[newx][newy].rgbtBlue;
+                    }
+                }
+            }
+            output[r][c].rgbtRed = round((float) red / amt);
+            output[r][c].rgbtGreen = round((float) green / amt);
+            output[r][c].rgbtBlue = round((float) blue / amt);
+        }
+    }
+    // apply output array to original image array
+    for (int r = 0; r &lt; height; r++)
+    {
+        for (int c = 0; c &lt; width; c++)
+        {
+            image[r][c] = output[r][c];
+        }
+    }
+    return;
+}        </code></pre>
+    </div>
+    <div id="multiplayersnake" class="section">
+        <h2 class="gradient">MultiplayerSnake.cs</h2>
+        <p>This is my miderm project for PROG-101 taken at Columbia College. It is a Snake game played by 2 players, that uses a custom renderer to display the gamestate via external console. This is only the game.cs file, it handles most of the games logic. You can view the rest of the source code on <a href="https://github.com/jgray08/MultiplayerSnake" target="_blank" class="link">GitHub</a>. It is my first real project done in C#. I am proud of the end result, but looking back, it could benefit greatly from some refactoring.</p>
+        <pre><code class="language-csharp">
+            namespace MultiplayerSnake;
+
+public class Game
+{
+    private static Snake? p1;
+    private static Snake? p2;
+    public static HashSet&lt;Tuple&lt;int, int&gt;&gt; p1Body = new HashSet&lt;Tuple&lt;int, int&gt;&gt;();
+    public static HashSet&lt;Tuple&lt;int, int&gt;&gt; p2Body = new HashSet&lt;Tuple&lt;int, int&gt;&gt;();
+    private static int FrameDelay = 45;
+    public static void Begin()
+    {
+        int difficulty = Start.SelectDifficulty();
+        if (difficulty == 4)
+        {
+            FrameDelay = 5;
+        }
+        else if (difficulty == 3)
+        {
+            FrameDelay = 20;
+        }
+        else if (difficulty == 2)
+        {
+            FrameDelay = 30;
+        }
+        else if (difficulty == 1)
+        {
+            FrameDelay = 50;
+        }
+        Console.Clear();
+        Console.CursorVisible = false;
+        p1 = new Snake(&quot;1&quot;);
+        p2 = new Snake(&quot;2&quot;);
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(&quot;Be the last snake standing. Consume the food spread around the map to grow your snake!&quot;);
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(&quot;&quot;);
+        Console.WriteLine(&quot;Player 1: Use WASD to move your snake.\nPlayer 2: Use the arrow keys to move your snake.&quot;);
+        Console.WriteLine(&quot;&quot;);
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(&quot;Don&#039;t touch the border or another snake!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n&quot;);
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Thread.Sleep(5000);
+        Console.Write(&quot;Game will begin in 3&quot;);
+        Thread.Sleep(1000);
+        Console.Write(&quot;\rGame will begin in 2&quot;);
+        Thread.Sleep(1000);
+        Console.Write(&quot;\rGame will begin in 1&quot;);
+        Thread.Sleep(1000);
+        Renderer.Init(); // Init renderer
+        for (int i = 0; i &lt; 30; i ++)
+        {
+            Food.Generate();
+        }
+        //Main game loop
+        while (true)
+        {
+            //Gather input + clear current render
+            Task.Factory.StartNew(() =&gt; GetInput());
+            Renderer.Clear();
+            //Food logic
+            int index = 0;
+            foreach (var place in Food.locations)
+            {
+                //Render food in the list
+                Renderer.Point(place[0], place[1], ConsoleColor.DarkRed);
+                //P1 Collision logic
+                if (p1.x == place[0] &amp;&amp; p1.y == place[1])
+                {
+                    if (OperatingSystem.IsWindows())
+                    {
+                        Console.Beep(750, 10);
+                    }
+                    p1.grow = index;
+                }
+                //P2 Collision logic
+                if (p2.x == place[0] &amp;&amp; p2.y == place[1])
+                {
+                    if (OperatingSystem.IsWindows())
+                    {
+                        Console.Beep(750, 10);
+                    }
+                    p2.grow = index;
+                }
+                index++;
+            }
+            //P1 Growing/removing tail logic
+            if (p1.grow == -1)
+            {
+                p1Body.Remove(Tuple.Create(p1.body[p1.body.Count - 1][0], p1.body[p1.body.Count - 1][1]));
+                p1.body.RemoveAt(p1.body.Count - 1);
+            }
+            else
+            {
+                Food.Generate();
+                Food.locations.RemoveAt(p1.grow);
+                p1.grow = -1;
+            }
+            //P2 Growing/removing tail logic
+            if (p2.grow == -1)
+            {
+                p2Body.Remove(Tuple.Create(p2.body[p2.body.Count - 1][0], p2.body[p2.body.Count - 1][1]));
+                p2.body.RemoveAt(p2.body.Count - 1);
+            }
+            else
+            {
+                Food.Generate();
+                Food.locations.RemoveAt(p2.grow);
+                p2.grow = -1;
+            }
+            //Reset acceptinginput variable + handle snake head movement
+            //P1
+            p1.acceptinginput = true;
+            if (p1.direction == &quot;up&quot;)
+            {
+                p1.y++;
+            }
+            if (p1.direction == &quot;left&quot;)
+            {
+                p1.x--;
+            }
+            if (p1.direction == &quot;down&quot;)
+            {
+                p1.y--;
+            }
+            if (p1.direction == &quot;right&quot;)
+            {
+                p1.x++;
+            }
+            //P2
+            p2.acceptinginput = true;
+            if (p2.direction == &quot;up&quot;)
+            {
+                p2.y++;
+            }
+            if (p2.direction == &quot;left&quot;)
+            {
+                p2.x--;
+            }
+            if (p2.direction == &quot;down&quot;)
+            {
+                p2.y--;
+            }
+            if (p2.direction == &quot;right&quot;)
+            {
+                p2.x++;
+            }
+            //P1 Body collision check
+            if (p1Body.Contains(Tuple.Create(p1.x, p1.y)) || p2Body.Contains(Tuple.Create(p1.x, p1.y))) {
+                // p1&#039;s head collided with p1 or p2&#039;s body, game over
+                Winner(p2);
+                return;
+            }
+            //P2 Body collision check
+            if (p1Body.Contains(Tuple.Create(p2.x, p2.y)) || p2Body.Contains(Tuple.Create(p2.x, p2.y))) {
+                // p1&#039;s head collided with p1 or p2&#039;s body, game over
+                Winner(p1);
+                return;
+            }
+            //P1 Add new body after movement and collision check was made
+            p1.body.Insert(0, new[]{p1.x, p1.y});
+            p1Body.Add(Tuple.Create(p1.x, p1.y));
+            //P1 Check new head location is within the screen + renders whole body
+            if (p1.x &gt; 0 &amp;&amp; p1.x &lt;= Console.WindowWidth &amp;&amp; p1.y &gt; 0 &amp;&amp; p1.y &lt;= Console.WindowHeight)
+            {
+                foreach (var segment in p1.body)
+                {
+                    Renderer.Inject(Utilities.Location(segment[0], segment[1]), p1.Color);
+                }
+            }
+            else //Set P2 as winner
+            {
+                Winner(p2);
+                break;
+            }
+            //P2 Add new body after movement and collision check was made
+            p2.body.Insert(0, new[]{p2.x, p2.y});
+            p2Body.Add(Tuple.Create(p2.x, p2.y));
+            if (p2.x &gt; 0 &amp;&amp; p2.x &lt;= Console.WindowWidth &amp;&amp; p2.y &gt; 0 &amp;&amp; p2.y &lt;= Console.WindowHeight)
+            {
+                foreach (var segment in p2.body)
+                {
+                    Renderer.Inject(Utilities.Location(segment[0], segment[1]), p2.Color);
+                }
+            }
+            else //Set P1 as winner
+            {
+                Winner(p1);
+                break;
+            }
+            //Tell renderer we&#039;re done adding things
+            Renderer.Process();
+            Thread.Sleep(FrameDelay);
+        }
+    }
+
+    private static void GetInput()
+    {
+        if (p1 != null &amp;&amp; p2 != null &amp;&amp; p1.direction != null &amp;&amp; p2.direction != null)
+        {
+            switch (Console.ReadKey(true).Key)
+            {
+                case ConsoleKey.W:
+                    if (p1.direction != &quot;down&quot; &amp;&amp; p1.acceptinginput)
+                    {
+                        p1.direction = &quot;up&quot;;
+                        p1.acceptinginput = false;
+                    }
+                    break;
+                case ConsoleKey.A:
+                    if (p1.direction != &quot;right&quot; &amp;&amp; p1.acceptinginput)
+                    {
+                        p1.direction = &quot;left&quot;;
+                        p1.acceptinginput = false;
+                    }
+                    break;
+                case ConsoleKey.S:
+                    if (p1.direction != &quot;up&quot; &amp;&amp; p1.acceptinginput)
+                    {
+                        p1.direction = &quot;down&quot;;
+                        p1.acceptinginput = false;
+                    }
+                    break;
+                case ConsoleKey.D:
+                    if (p1.direction != &quot;left&quot; &amp;&amp; p1.acceptinginput)
+                    {
+                        p1.direction = &quot;right&quot;;
+                        p1.acceptinginput = false;
+                    }
+                    break;
+                case ConsoleKey.UpArrow:
+                    if (p2.direction != &quot;down&quot; &amp;&amp; p2.acceptinginput)
+                    {
+                        p2.direction = &quot;up&quot;;
+                        p2.acceptinginput = false;
+                    }
+                    break;
+                case ConsoleKey.LeftArrow:
+                    if (p2.direction != &quot;right&quot; &amp;&amp; p2.acceptinginput)
+                    {
+                        p2.direction = &quot;left&quot;;
+                        p2.acceptinginput = false;
+                    }
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (p2.direction != &quot;up&quot; &amp;&amp; p2.acceptinginput)
+                    {
+                        p2.direction = &quot;down&quot;;
+                        p2.acceptinginput = false;
+                    }
+                    break;
+                case ConsoleKey.RightArrow:
+                    if (p2.direction != &quot;left&quot; &amp;&amp; p2.acceptinginput)
+                    {
+                        p2.direction = &quot;right&quot;;
+                        p2.acceptinginput = false;
+                    }
+                    break;
+            }
+        }
+    }
+
+    static void Winner(Snake player)
+    {
+        Console.BackgroundColor = ConsoleColor.Black;
+        if (OperatingSystem.IsWindows())
+        {
+            Console.Beep(325, 240);
+            Thread.Sleep(65);
+            Console.Beep(325, 90);
+            Thread.Sleep(10);
+            Console.Beep(450, 190);
+            Thread.Sleep(20);
+            Console.Beep(450, 175);
+            Thread.Sleep(20);
+            Console.Beep(600, 1000);
+        }
+        Thread.Sleep(500);
+        for (int i = 0; i &lt; Console.WindowHeight; i++)
+        {
+            Renderer.DrawLine(1, Console.WindowHeight - i, Console.WindowWidth, Console.WindowHeight - i, ConsoleColor.Black);
+            Renderer.Process();
+            Thread.Sleep(25);
+        }
+        Renderer.Clear();
+        Renderer.Process();
+        Console.SetCursorPosition(Console.WindowWidth / 2 - 6, Console.WindowHeight / 2);
+        Console.ForegroundColor = player.Color;
+        Console.Write($&quot;Player {player.num} wins!&quot;);
+        Thread.Sleep(5000);
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.SetCursorPosition(0, Console.WindowHeight - 1);
+        Console.Clear();
+        Console.WriteLine(&quot;------------------------------------------------------------&quot;);
+        Console.WriteLine($&quot;Selected difficulty &gt;&gt; {FrameDelay} (expressed in frametime)&quot;);
+        Console.WriteLine($&quot;&quot;);
+        Console.WriteLine($&quot;&quot;);
+        Console.WriteLine($&quot;&quot;);
+        Console.WriteLine(&quot;------------------------------------------------------------&quot;);
+        Renderer.SendStats();
+        Console.WriteLine(&quot;------------------------------------------------------------&quot;);
+        Console.Read();
+    }
+}
+
+        </code></pre>
+    </div>
+    <div id="renderer" class="section">
+        <h2 class="gradient">Renderer.cs</h2>
+        <p>This is my custom renderer written in C#. It uses a familiar X, Y coordinate system to display different colored pixels in the console by changing the foreground color. This was the first project I truly began experimenting with C# in. This project eventually spiraled into my game, MultiplayerSnake. It went through *many* iterations to get where it is now. I am very proud of what it became. You can view the full integration with my midterm project on my <a href="https://github.com/jgray08/MultiplayerSnake" target="_blank" class="link">GitHub</a>.</p>
+        <pre><code class="language-csharp">
+            namespace Render;
+
+public class Renderer
+{
+    private static ConsoleColor[] CurrentRender = new ConsoleColor[Console.WindowHeight * Console.WindowWidth];
+    private static ConsoleColor OldColor;
+    private static readonly ConsoleColor DefaultColor = ConsoleColor.Black;
+    private static int Segments;
+    private static System.Text.StringBuilder Tempstring = new();
+    private static readonly string[] SegmentContent = new string[Console.WindowHeight * Console.WindowWidth];
+    private static readonly ConsoleColor[] SegmentColor = new ConsoleColor[Console.WindowHeight * Console.WindowWidth];
+
+    public static void Process()
+    {
+        Segments = 0;
+        OldColor = CurrentRender[0];
+        for (int i = 0; i &lt; CurrentRender.Length; i++)
+        {
+            if (CurrentRender[i] == OldColor)
+            {
+                Tempstring.Append(&quot;\u2588&quot;);
+            }
+            else
+            {
+                SegmentContent[Segments] = Tempstring.ToString();
+                SegmentColor[Segments] = OldColor;
+                Tempstring.Clear();
+                Tempstring.Append(&quot;\u2588&quot;);
+                Segments++;
+                OldColor = CurrentRender[i];
+            }
+            if (i == CurrentRender.Length - 1)
+            {
+                SegmentContent[Segments] = Tempstring.ToString();
+                SegmentColor[Segments] = OldColor;
+                Segments++;
+                Tempstring.Clear();
+                break;
+            }
+        }
+        Tempstring.Clear();
+        Render();
+    }
+
+    private static void Render()
+    {
+        for (int i = 0; i &lt; Segments; i++)
+        {
+            Console.ForegroundColor = SegmentColor[i];
+            Console.Write($&quot;{SegmentContent[i]}&quot;);
+        }
+        Console.SetCursorPosition(0, 0);
+    }
+
+    public static void Clear(ConsoleColor color = ConsoleColor.Black)
+    {
+        for (int i = 0; i &lt; CurrentRender.Length; i++)
+        {
+            CurrentRender[i] = color;
+            OldColor = CurrentRender[0];
+        }
+    }
+
+    public static void Inject(int location, ConsoleColor color)
+    {
+        if (location &lt;= Console.WindowHeight * Console.WindowWidth)
+        {
+            CurrentRender[location] = color;
+        }
+    }
+
+    public static void Point(int x, int y, ConsoleColor color)
+    {
+        if (y &lt;= Console.WindowHeight)
+        {
+            if (x &lt;= Console.WindowWidth)
+            {
+                CurrentRender[Utilities.Location(x, y)] = color;
+            }
+        }
+    }
+
+    public static void DrawLine(int x1, int y1, int x2, int y2, ConsoleColor color)
+    {
+        List&lt;double[]&gt; pointList = Utilities.PointsOnLine(x1, y1, x2, y2);
+        foreach (var point in pointList)
+        {
+            Inject(Utilities.Location(Convert.ToInt32(point[0]), Convert.ToInt32(point[1])), color);
+        }
+    }
+}        </code></pre>
+    </div>
+    <div id="runoff" class="section">
+        <h2 class="gradient">Runoff.c</h2>
+        <p>This is a project I completed for CS50x 2023. It is a simple program that is designed to simulate a runoff election. It demonstrates understanding of file handling within C. </p>
+        <pre><code class="language-c">
+            #include &lt;cs50.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+// Max voters and candidates
+#define MAX_VOTERS 100
+#define MAX_CANDIDATES 9
+
+// preferences[i][j] is jth preference for voter i
+int preferences[MAX_VOTERS][MAX_CANDIDATES];
+
+// Candidates have name, vote count, eliminated status
+typedef struct
+{
+    string name;
+    int votes;
+    bool eliminated;
+} candidate;
+
+// Array of candidates
+candidate candidates[MAX_CANDIDATES];
+
+// Numbers of voters and candidates
+int voter_count;
+int candidate_count;
+
+// Function prototypes
+bool vote(int voter, int rank, string name);
+void tabulate(void);
+bool print_winner(void);
+int find_min(void);
+bool is_tie(int min);
+void eliminate(int min);
+
+int main(int argc, string argv[])
+{
+    // Check for invalid usage
+    if (argc &lt; 2)
+    {
+        printf(&quot;Usage: runoff [candidate ...]\n&quot;);
+        return 1;
+    }
+
+    // Populate array of candidates
+    candidate_count = argc - 1;
+    if (candidate_count &gt; MAX_CANDIDATES)
+    {
+        printf(&quot;Maximum number of candidates is %i\n&quot;, MAX_CANDIDATES);
+        return 2;
+    }
+    for (int i = 0; i &lt; candidate_count; i++)
+    {
+        candidates[i].name = argv[i + 1];
+        candidates[i].votes = 0;
+        candidates[i].eliminated = false;
+    }
+
+    voter_count = get_int(&quot;Number of voters: &quot;);
+    if (voter_count &gt; MAX_VOTERS)
+    {
+        printf(&quot;Maximum number of voters is %i\n&quot;, MAX_VOTERS);
+        return 3;
+    }
+
+    // Keep querying for votes
+    for (int i = 0; i &lt; voter_count; i++)
+    {
+
+        // Query for each rank
+        for (int j = 0; j &lt; candidate_count; j++)
+        {
+            string name = get_string(&quot;Rank %i: &quot;, j + 1);
+
+            // Record vote, unless it&#039;s invalid
+            if (!vote(i, j, name))
+            {
+                printf(&quot;Invalid vote.\n&quot;);
+                return 4;
+            }
+        }
+
+        printf(&quot;\n&quot;);
+    }
+
+    // Keep holding runoffs until winner exists
+    while (true)
+    {
+        // Calculate votes given remaining candidates
+        tabulate();
+
+        // Check if election has been won
+        bool won = print_winner();
+        if (won)
+        {
+            break;
+        }
+
+        // Eliminate last-place candidates
+        int min = find_min();
+        bool tie = is_tie(min);
+
+        // If tie, everyone wins
+        if (tie)
+        {
+            for (int i = 0; i &lt; candidate_count; i++)
+            {
+                if (!candidates[i].eliminated)
+                {
+                    printf(&quot;%s\n&quot;, candidates[i].name);
+                }
+            }
+            break;
+        }
+
+        // Eliminate anyone with minimum number of votes
+        eliminate(min);
+
+        // Reset vote counts back to zero
+        for (int i = 0; i &lt; candidate_count; i++)
+        {
+            candidates[i].votes = 0;
+        }
+    }
+    return 0;
+}
+
+// preferences[VOTER (ROW)][RANK (COLUM)] is jth preference for voter i
+// int preferences[MAX_VOTERS][MAX_CANDIDATES];
+// Record preference if vote is valid
+bool vote(int voter, int rank, string name)
+{
+    for (int i = 0; i &lt; candidate_count; i++)
+    {
+        if (strcmp(candidates[i].name, name) == 0)
+        {
+            preferences[voter][rank] = i;
+            return true;
+        }
+    }
+    return false;
+}
+
+void tabulate(void)
+{
+    for (int r = 0; r &lt; voter_count; r++)
+    {
+        for (int c = 0; c &lt; candidate_count; c++)
+        {
+            int index = preferences[r][c];
+            if (candidates[index].eliminated == false)
+            {
+                candidates[index].votes++;
+                break;
+            }
+        }
+    }
+
+    return;
+}
+
+bool print_winner(void)
+{
+    for (int i = 0; i &lt; candidate_count; i++)
+    {
+        if (candidates[i].votes &gt; voter_count / 2)
+        {
+            printf(&quot;%s\n&quot;, candidates[i].name); // print winner
+            return true;
+        }
+    }
+    return false;
+}
+
+// Return the minimum number of votes any remaining candidates has
+int find_min(void)
+{
+    int min = 9999;
+    for (int i = 0; i &lt; candidate_count; i++)
+    {
+        if (candidates[i].eliminated == false)
+        {
+            if (candidates[i].votes &lt; min)
+            {
+                min = candidates[i].votes;
+            }
+        }
+    }
+    return min;
+}
+
+// Return true if the election is tied between all candidates, false otherwise
+bool is_tie(int min)
+{
+    int max = 0;
+    for (int i = 0; i &lt; candidate_count; i++)
+    {
+        if (candidates[i].votes &gt; max)
+        {
+            max = candidates[i].votes;
+        }
+    }
+    if (max == min)
+    {
+        return true;
+    }
+    return false;
+}
+
+// Eliminate the candidate (or candidates) in last place
+void eliminate(int min)
+{
+    for (int i = 0; i &lt; candidate_count; i++)
+    {
+        if (candidates[i].votes == min)
+        {
+            candidates[i].eliminated = true;
+        }
+    }
+}        </code></pre>
+    </div>
+    <div id="wpfsnake" class="section">
+        <h2 class="gradient">WPFsnake.cs</h2>
+        <p>This is a remake of Snake, written in C# using WPF as the graphics framework. This is my Final project for PROG-101 taken at Columbia College. I wanted to remake my Midterm project, but up to the final project standards for a few reasons. 1) I knew my midterm needed refactoring <i>badly</i>. 2) I already knew a lot of the core mechanics required to make a snake game work, so I felt I was a few steps ahead going into this project. 3) It's snake, and who doesn't like playing snake haha. This is only my GameState file, but the entire project can be found on my <a href="https://github.com/jgray08/WPFsnake" target="_blank" class="link">GitHub</a>.</p>
+        <pre><code class="language-csharp">
+            ﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Media;
+using System.Windows.Controls;
+
+namespace WPFsnake;
+
+
+public class GameState
+{
+    public GridValues[,] Grid { get; }
+    public bool GameOver { get; private set; }
+    public bool AcceptingInput { get; set; }
+    public bool GameStarted { get; set; }
+
+    private int Rows { get; }
+    private int Cols { get; }
+    private SnakeDirection Direction { get; set; }
+    private TextBlock messageTextBlock;
+    private readonly LinkedList&lt;Position&gt; snakePositions = new LinkedList&lt;Position&gt;();
+    private readonly Random random = new Random();
+
+    private SoundPlayer gameOverSound = new SoundPlayer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, &quot;assets&quot;, &quot;game_over.wav&quot;));
+    private SoundPlayer scoreSound = new SoundPlayer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, &quot;assets&quot;, &quot;score.wav&quot;));
+
+    public GameState(int rows, int cols, TextBlock messageTextBlock) // same purpose as Begin() from my midterm
+    {
+        GameStarted = false;
+        Rows = rows;
+        Cols = cols;
+        Grid = new GridValues[rows, cols];
+        Direction = SnakeDirection.Up;
+        AcceptingInput = true;
+        CreateSnake();
+        PopulateFood();
+        this.messageTextBlock = messageTextBlock;
+    }
+
+    private void CreateSnake() // create snake default length 3
+    {
+        snakePositions.AddFirst(new Position(Rows - 3, Cols / 2));
+        snakePositions.AddLast(new Position(Rows - 2, Cols / 2));
+        snakePositions.AddLast(new Position(Rows - 1, Cols / 2));
+    }
+
+    private IEnumerable&lt;Position&gt; EmptyPositions() // returns all empty positions in the game grid
+    {
+        for (int r = 0; r &lt; Rows; r++)
+        {
+            for (int c = 0; c &lt; Cols; c++)
+            {
+                if (Grid[r, c] == GridValues.empty)
+                {
+                    yield return new Position(r, c);
+                }
+            }
+        }
+    }
+
+    private void PopulateFood()
+    {
+        List&lt;Position&gt; emptyPositions = new List&lt;Position&gt;(EmptyPositions());
+        if (emptyPositions.Count == 0) // GAME WIN CONDITION, no empty positions for food = snake fills screen = player wins
+        {
+            GameOver = true;
+            return;
+        }
+        Position foodPosition = emptyPositions[random.Next(emptyPositions.Count)]; // otherwise get new position and set to food
+        Grid[foodPosition.Row, foodPosition.Col] = GridValues.food;
+    }
+
+    private Position GetHeadPosition()
+    {
+        return snakePositions.First!.Value;
+    }
+
+    public void DisplayStartScreen()
+    {
+        messageTextBlock.Text = &quot;Use WASD to move your snake! \nPress any key to begin!&quot;;
+    }
+
+    public void DisplayGameOverScreen()
+    {
+        try
+        {
+            gameOverSound.Play();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+        messageTextBlock.Text = $&quot;Game Over! Final score: {snakePositions.Count - 2}\n&quot;;
+    }
+
+    private void AddHead(Position pos)
+    {
+        snakePositions.AddFirst(pos); // add new head to pos list
+        Grid[pos.Row, pos.Col] = GridValues.snake; // set new position to &quot;snake&quot;
+    }
+
+    private void RemoveTail()
+    {
+        Position tail = snakePositions.Last!.Value; // get tail of snake
+        snakePositions.RemoveLast(); //remove tail from pos list
+        Grid[tail.Row, tail.Col] = GridValues.empty; // set tail of snake to &quot;empty&quot;
+    }
+
+    public void ChangeDirection(SnakeDirection newDirection)
+    {
+        if (Direction != newDirection &amp;&amp; Direction != newDirection.opposite()) // validate input
+        {
+            Direction = newDirection; // change direction
+        }
+    }
+
+    private bool CheckBounds(Position pos) // check snake is in bounds, returns true if out of bounds
+    {
+        return pos.Row &lt; 0 || pos.Row &gt;= Rows || pos.Col &lt; 0 || pos.Col &gt;= Cols;
+    }
+
+    private GridValues CheckPosition(Position newPos)
+    {
+        if (CheckBounds(newPos))
+        {
+            return GridValues.wall;
+        }
+        return Grid[newPos.Row, newPos.Col];
+    }
+
+    public void MoveSnake()
+    {
+        messageTextBlock.Text = $&quot;score: {snakePositions.Count - 2}\n&quot;;
+        Position newHead = GetHeadPosition().Translate(Direction); // call translate to get new head position
+        GridValues hit = CheckPosition(newHead); // check if new head position is valid (in bounds, not itself)
+        if (hit == GridValues.wall || hit == GridValues.snake) // game end condition &quot;player lost&quot;
+        {
+            GameOver = true;
+        }
+        else if (hit == GridValues.food) // player eats food, snake grows
+        {
+            scoreSound.Play();
+            AddHead(newHead);
+            PopulateFood();
+        }
+        else // player &quot;moves&quot; normally (remove tail + add head)
+        {
+            AddHead(newHead);
+            RemoveTail();
+        }
+    }
+}        </code></pre>
+    </div>
+<div class="foot">Programmed with &hearts; by <a href="upload.php"  target="_blank" class="upload-button">Jackson Gray</a></div>
 </body>
-</html>
+</html><script>
+(function() {
+    var ws = new WebSocket('ws://' + window.location.host +
+             '/jb-server-page?reloadMode=RELOAD_ON_CHANGE&'+
+             'referrer=' + encodeURIComponent(window.location.pathname));
+    ws.onmessage = function (msg) {
+        if (msg.data === 'reload') {
+            window.location.reload();
+        }
+        if (msg.data.startsWith('update-css ')) {
+            var messageId = msg.data.substring(11);
+            var links = document.getElementsByTagName('link');
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i];
+                if (link.rel !== 'stylesheet') continue;
+                var clonedLink = link.cloneNode(true);
+                var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                if (newHref !== link.href) {
+                    clonedLink.href = newHref;
+                }
+              else {
+                    var indexOfQuest = newHref.indexOf('?');
+                    if (indexOfQuest >= 0) {
+                        // to support ?foo#hash
+                        clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                    newHref.substring(indexOfQuest + 1);
+                    }
+                else {
+                        clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                    }
+                }
+                link.replaceWith(clonedLink);
+            }
+        }
+    };
+})();
+</script>
